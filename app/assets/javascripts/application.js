@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+  $('.stripe-checkout').click(function(e){
+    var $form = $(this).closest('form')
+    StripeCheckout.configure({token: function(token){
+      $form.append($('<input>').attr({
+        type: 'hidden',
+        name: 'stripeToken',
+        value: token.id
+      })).submit()
+    }}).open($.extend({amount: $(this).siblings('#tip_amount').val() * 100},
+                      $(this).data()))
+    e.preventDefault()
+  })
+})

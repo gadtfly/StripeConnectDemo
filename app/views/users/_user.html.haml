@@ -3,4 +3,4 @@
   = user.uid
   Given: #{user.tips_given.sum(:amount)}
   Received: #{user.tips_received.sum(:amount)}
-  = render partial: 'tips/form', locals: {tip: user.tips_received.new} unless user == current_user
+  = render partial: 'tips/form', locals: {tip: user.tips_received.new} if user != current_user
