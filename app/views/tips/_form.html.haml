@@ -1,4 +1,5 @@
 = form_for tip do |f|
   = f.hidden_field :tippee_id
+  = f.label :amount, '$'
   = f.number_field :amount, min: 0
   = f.submit :tip

@@ -1,5 +1,5 @@
-%div
-  = tip.amount
-  = render tip.tipper
+.tip
+  .amount $#{tip.amount}
+  .tipper= render tip.tipper
   to
-  = render tip.tippee
+  .tippee= render tip.tippee
