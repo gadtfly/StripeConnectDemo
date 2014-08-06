@@ -2,13 +2,11 @@
 <div><%= @user.uid %></div>
 
 <div>
-  <h2>Given:</h2>
-  <div><%= @user.tips_given.sum(:amount) %></div>
+  <h2>Given: <%= @user.tips_given.sum(:amount) %></h2>
   <div><%= render @user.tips_given %></div>
 </div>
 
 <div>
-  <h2>Received:</h2>
-  <div><%= @user.tips_received.sum(:amount) %></div>
+  <h2>Received: <%= @user.tips_received.sum(:amount) %></h2>
   <div><%= render @user.tips_received %></div>
 </div>

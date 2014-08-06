@@ -13,14 +13,8 @@
       <%= link_to 'Tips', :tips %>
 
       <% if current_user %>
-        <%= current_user.email %>
-
-        <% if current_user.uid %>
-          <%= current_user.uid %>
-        <% else %>
-          <%= link_to 'Authorize Stripe', user_omniauth_authorize_path(:stripe_connect) %>
-        <% end %>
-        
+        <%= render current_user %>
+        <%= link_to 'Authorize Stripe', user_omniauth_authorize_path(:stripe_connect) unless current_user.uid %>
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign Up', new_user_registration_path %>
