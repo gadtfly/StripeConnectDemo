@@ -3,5 +3,5 @@
   = f.label :amount, '$'
   = f.number_field :amount, min: 0
   = f.submit :tip, class: 'stripe-checkout', data: {key:         tip.tippee.stripe_public_key,
-                                                    description: "Tipping #{tip.tippee.email}",
+                                                    description: tip.description,
                                                     name:        'StripeConnectDemo'}
