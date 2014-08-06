@@ -41,3 +41,4 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'omniauth-stripe-connect'
 gem 'figaro'
+gem 'haml-rails'
