@@ -8,22 +8,26 @@
   </head>
   <body>
 
-    <% if current_user %>
-      <% if current_user.stripe_public_key %>
-        Authorized with Stripe
+    <div>
+      <% if current_user %>
+        <% if current_user.uid %>
+          <%= current_user.uid %>
+        <% else %>
+          <%= link_to 'Authorize Stripe', user_omniauth_authorize_path(:stripe_connect) %>
+        <% end %>
+
+        <%= current_user.email %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= link_to 'Authorize Stripe', user_omniauth_authorize_path(:stripe_connect) %>
+        <%= link_to 'Sign Up', new_user_registration_path %>
+        <%= link_to 'Sign In', new_user_session_path %>
       <% end %>
+    </div>
 
-      <%= current_user.email %>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign Up', new_user_registration_path %>
-      <%= link_to 'Sign In', new_user_session_path %>
-    <% end %>
-
-    <%= flash[:notice] if flash[:notice] %>
-    <%= flash[:alert] if flash[:alert] %>
+    <div>
+      <%= flash[:notice] if flash[:notice] %>
+      <%= flash[:alert] if flash[:alert] %>
+    </div>
 
     <%= yield %>
 
