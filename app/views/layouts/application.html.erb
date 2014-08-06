@@ -9,6 +9,12 @@
   <body>
 
     <% if current_user %>
+      <% if current_user.stripe_public_key %>
+        Authorized with Stripe
+      <% else %>
+        <%= link_to 'Authorize Stripe', user_omniauth_authorize_path(:stripe_connect) %>
+      <% end %>
+
       <%= current_user.email %>
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
     <% else %>
