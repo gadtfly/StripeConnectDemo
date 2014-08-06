@@ -1,0 +1,14 @@
+<h1><%= @user.email %></h1>
+<div><%= @user.uid %></div>
+
+<div>
+  <h2>Given:</h2>
+  <div><%= @user.tips_given.sum(:amount) %></div>
+  <div><%= render @user.tips_given %></div>
+</div>
+
+<div>
+  <h2>Received:</h2>
+  <div><%= @user.tips_received.sum(:amount) %></div>
+  <div><%= render @user.tips_received %></div>
+</div>

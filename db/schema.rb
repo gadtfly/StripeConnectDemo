@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806002951) do
+ActiveRecord::Schema.define(version: 20140806004850) do
+
+  create_table "tips", force: true do |t|
+    t.float    "amount"
+    t.integer  "tipper_id"
+    t.integer  "tippee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tips", ["tippee_id"], name: "index_tips_on_tippee_id"
+  add_index "tips", ["tipper_id"], name: "index_tips_on_tipper_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

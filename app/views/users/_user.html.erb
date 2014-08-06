@@ -1,4 +1,7 @@
 <div>
+  <%= link_to user.email, user %>
   <%= user.uid %>
-  <%= user.email %>
+  Given: <%= user.tips_given.sum(:amount) %>
+  Received: <%= user.tips_received.sum(:amount) %>
+  <%= render partial: 'tips/form', locals: {tip: user.tips_received.new} %>
 </div>
